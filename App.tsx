@@ -1,19 +1,13 @@
 import { StyleSheet, Text, View, StatusBar } from "react-native";
+import AppRoot from "./src/index";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World</Text>
+    <View style={{ flex: 1 }}>
+      <AppRoot />
+      {/* <Text>Hello World</Text> */}
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: StatusBar.currentHeight,
-  },
-});
+const styles = StyleSheet.create({});
