@@ -51,17 +51,11 @@ const PersonalInfo = () => {
           <Text style={styles.sub_heading}>Create a new account</Text>
           <View style={styles.input_field}>
             <Text>Name</Text>
-            <CustomTextInput
-              inputStyle={{ width: width * 0.8 }}
-              setValue={setName}
-            />
+            <CustomTextInput inputStyle={{ width: width * 0.8 }} />
           </View>
           <View style={styles.input_field}>
             <Text>Father Name</Text>
-            <CustomTextInput
-              inputStyle={{ width: width * 0.8 }}
-              setValue={setFatherName}
-            />
+            <CustomTextInput inputStyle={{ width: width * 0.8 }} />
           </View>
           <View style={styles.input_field}>
             <Text>NRC No.</Text>
@@ -96,18 +90,12 @@ const PersonalInfo = () => {
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <CustomTextInput inputStyle={{ width: width * 0.185 }} />
-              <CustomTextInput
-                inputStyle={{ width: width * 0.6 }}
-                setValue={setContact}
-              />
+              <CustomTextInput inputStyle={{ width: width * 0.6 }} />
             </View>
           </View>
           <View style={styles.input_field}>
             <Text>Address</Text>
-            <CustomTextInput
-              inputStyle={{ width: width * 0.8 }}
-              setValue={setAddress}
-            />
+            <CustomTextInput inputStyle={{ width: width * 0.8 }} />
           </View>
           <View
             style={{
