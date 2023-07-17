@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 const Radio = (props: any) => {
   const [checked, setChecked] = useState(0);
-  const [genderType, setGenderType] = useState(""); // for data storage
   return (
     <View style={styles.radio_wrapper}>
       {props.values.map((value: string, index: number) => {
@@ -13,7 +12,7 @@ const Radio = (props: any) => {
             style={styles.radio}
             onPress={() => {
               setChecked(index);
-              setGenderType(value);
+              props.getValue(value);
             }}
           >
             <View style={styles.radio_outer}>

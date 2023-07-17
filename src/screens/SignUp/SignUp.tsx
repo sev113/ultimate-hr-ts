@@ -1,18 +1,22 @@
 import { StyleSheet, Text, View, Dimensions } from "react-native";
 import React, { useState } from "react";
-import { PersonalInfo, JobInfo } from "screens";
+import PersonalInfo from "./PersonalInfo";
+import JobInfo from "./JobInfo";
+import { StackScreenProps } from "@react-navigation/stack";
+import { IStackRouteParamList } from "models";
 
 const { width, height } = Dimensions.get("window");
 
-const SignUp = () => {
-  const [personalInfo, setPersonalInfo] = useState(true);
-  const [jobInfo, setJobInfo] = useState(false);
+type MainRoutePropsType = StackScreenProps<IStackRouteParamList>;
+
+const SignUp = ({ navigation }: MainRoutePropsType) => {
+  const [personalInfo, setPersonalInfo] = useState<boolean>(true);
+  const [jobInfo, setJobInfo] = useState<boolean>(false);
 
   return (
     <View style={styles.register_wrapper}>
       <View style={styles.info_bar}>
         <Text
-          // style={styles.info_text}
           style={personalInfo ? styles.info_text : null}
           onPress={() => {
             setPersonalInfo(true);
@@ -32,7 +36,7 @@ const SignUp = () => {
         </Text>
       </View>
       {personalInfo && <PersonalInfo />}
-      {jobInfo && <JobInfo />}
+      {jobInfo && <JobInfo navigation={navigation} />}
     </View>
   );
 };

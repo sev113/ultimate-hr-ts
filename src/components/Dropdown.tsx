@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Menu, MenuItem } from "react-native-material-menu";
-import { TouchableHighlight } from "react-native-gesture-handler";
+
 const { width, height } = Dimensions.get("window");
 
 const Dropdown = (props: any) => {
@@ -31,6 +31,7 @@ const Dropdown = (props: any) => {
               onPress={() => {
                 setVisible(false);
                 setselectedValue(value);
+                props.getValue(value);
               }}
             >
               {value}

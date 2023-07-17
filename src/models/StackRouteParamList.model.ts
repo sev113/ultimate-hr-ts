@@ -2,7 +2,7 @@ type IStackRouteParamList = {
   Main: undefined;
   Login: undefined;
   SignUp: undefined;
-  Home: undefined;
+  Home: { username: string };
   Registered: undefined;
 };
 

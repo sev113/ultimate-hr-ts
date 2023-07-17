@@ -7,28 +7,57 @@ import {
   Dimensions,
   Platform,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import CustomTextInput from "components/CusTextInput";
 import Button from "components/Button";
 import Radio from "components/Radio";
 import Dropdown from "components/Dropdown";
+import { StackScreenProps } from "@react-navigation/stack";
+import { IStackRouteParamList } from "models";
+import { branchData, deptData, positionData, jobTypeData } from "data";
+import { useDispatch } from "react-redux";
+import { registerJobInfo } from "redux/userSlice";
 
 const { width, height } = Dimensions.get("window");
-const jobType = ["internship", "probation", "permanent"];
 
-const position = [
-  "Project Manager",
-  "Frontend Developer",
-  "Backend Developer",
-  "UI/UX Designer",
-  "Software Tester",
-];
+type MainRoutePropsType = StackScreenProps<IStackRouteParamList>;
 
-const department = ["Developer", "HR", "Academic", "Marketing"];
+const JobInfo = ({ navigation }: MainRoutePropsType) => {
+  const [jobType, setJobType] = useState("");
+  const [position, setPosition] = useState("");
+  const [dept, setDept] = useState("");
+  const [branch, setBranch] = useState("");
 
-const branch = ["Hlaing", "Downtown"];
+  const jobInfo = {
+    jobType: jobType,
+    position: position,
+    dept: dept,
+    branch: branch,
+  };
 
-const JobInfo = () => {
+  const dispatch = useDispatch();
+  dispatch(registerJobInfo(jobInfo));
+
+  const handleOnJobType = (v: string) => {
+    setJobType(v);
+  };
+
+  const handleOnPosition = (v: string) => {
+    setPosition(v);
+  };
+
+  const handleOnDept = (v: string) => {
+    setDept(v);
+  };
+
+  const handleOnBranch = (v: string) => {
+    setBranch(v);
+  };
+
+  const handleOnRegister = () => {
+    navigation.navigate("Registered");
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -60,25 +89,37 @@ const JobInfo = () => {
           ]}
         >
           <Text style={{ display: "flex" }}>Type</Text>
-          <Radio values={jobType} />
+          <Radio values={jobTypeData} getValue={handleOnJobType} />
         </View>
 
         <View style={styles.input_field}>
           <Text>Position</Text>
           <View style={{ position: "relative" }}>
-            <Dropdown value={position} menuStyle={{ width: width * 0.8 }} />
+            <Dropdown
+              value={positionData}
+              menuStyle={{ width: width * 0.8 }}
+              getValue={handleOnPosition}
+            />
           </View>
         </View>
         <View style={styles.input_field}>
           <Text>Department</Text>
           <View style={{ position: "relative" }}>
-            <Dropdown value={department} menuStyle={{ width: width * 0.8 }} />
+            <Dropdown
+              value={deptData}
+              menuStyle={{ width: width * 0.8 }}
+              getValue={handleOnDept}
+            />
           </View>
         </View>
         <View style={styles.input_field}>
           <Text>Branch</Text>
           <View style={{ position: "relative" }}>
-            <Dropdown value={department} menuStyle={{ width: width * 0.8 }} />
+            <Dropdown
+              value={branchData}
+              menuStyle={{ width: width * 0.8 }}
+              getValue={handleOnBranch}
+            />
           </View>
         </View>
         <Button
@@ -89,6 +130,7 @@ const JobInfo = () => {
             marginTop: 10,
           }}
           textStyle={{ color: "#fff" }}
+          onPress={handleOnRegister}
         />
       </View>
     </KeyboardAvoidingView>

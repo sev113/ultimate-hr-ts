@@ -1,0 +1,9 @@
+export { default as cityData } from "./city";
+export { default as genderData } from "./gender";
+export { default as maritalStatusData } from "./maritalStatus";
+export { default as nrc } from "./nrc";
+export { default as townshipData } from "./township";
+export { default as branchData } from "./branch";
+export { default as deptData } from "./dept";
+export { default as jobTypeData } from "./jobType";
+export { default as positionData } from "./position";
