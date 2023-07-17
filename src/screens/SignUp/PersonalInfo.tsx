@@ -91,6 +91,8 @@ const PersonalInfo = () => {
             <Text>Name</Text>
             <CustomTextInput
               setValue={setName}
+              // value={name} ?? How to get back the input value
+              // defaultValue={name}
               inputStyle={{ width: width * 0.8 }}
             />
           </View>

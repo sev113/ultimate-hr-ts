@@ -12,6 +12,7 @@ const CustomTextInput = (props: any) => {
         style={{ ...props.inputTextStyle }}
         onChangeText={props.setValue}
         value={props.value}
+        defaultValue={props.defaultValue}
       />
     </View>
   );
